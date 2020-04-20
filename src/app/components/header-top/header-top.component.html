@@ -11,7 +11,7 @@
         <fa-icon [icon]="faPlusCircle"></fa-icon>
         Publicar
       </button>
-      <button class="btn btn-success btn-sm my-2 my-sm-0 btn-soft" *ngIf="!loggedIn" type="button" (click)="signInGoogle()">
+      <button class="btn btn-success btn-sm my-2 my-sm-0 btn-soft" *ngIf="!loggedIn" type="button" (click)="openModal(content)">
         <fa-icon [icon]="faUser"></fa-icon>
         Login
       </button>
@@ -23,6 +23,12 @@
         <small class="mr-2">{{user.name}}</small>
         <img [src]="user.photoUrl" class="rounded-circle" style="height: 20px;" alt="">
       </span>
+      <!-- Login Modal -->
+      <ng-template #content let-modal>
+        <div class="modal-body">
+          <app-auth></app-auth>
+        </div>
+      </ng-template>
     </form>
   </div>
 </nav>

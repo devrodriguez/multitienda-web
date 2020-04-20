@@ -7,13 +7,20 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderTopComponent } from './components/header-top/header-top.component';
 
 // Social login
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-let config = new AuthServiceConfig([
+import { AuthComponent } from './components/auth/auth.component';
+
+const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider("944280994375-11rfd3spalibjkg8g2nunvj9rqi34550.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("2794586083924477")
   }
 ]);
 
@@ -24,13 +31,15 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderTopComponent
+    HeaderTopComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     SocialLoginModule,
+    NgbModule,
   ],
   providers: [
     {

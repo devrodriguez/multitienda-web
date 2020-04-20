@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
+import { AuthService, SocialUser } from 'angularx-social-login';
+// Fontawsome
 import {
   faPlusCircle,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
+
+// Bootstrap
+import { NgbModal,  } from '@ng-bootstrap/ng-Bootstrap';
 
 @Component({
   selector: 'app-header-top',
@@ -18,21 +22,27 @@ export class HeaderTopComponent implements OnInit {
   public user: SocialUser;
   public loggedIn: boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
     this.authService.authState.subscribe(user => {
       this.user = user;
       this.loggedIn = (user != null);
+
+      if (this.loggedIn) {
+        this.modalService.dismissAll();
+      }
     });
   }
 
-  signInGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  openModal(content) {
+    this.modalService.open(content, { centered: true })
   }
 
   signOut(): void {
     this.authService.signOut();
   }
-
 }
