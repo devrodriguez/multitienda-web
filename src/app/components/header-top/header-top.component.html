@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light-silver">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,11 +7,11 @@
       <button class="btn btn-link btn-sm">Contactenos</button>
     </div>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-danger btn-sm my-2 my-sm-0 mr-2 btn-soft" type="submit">
+      <button class="btn btn-danger btn-sm my-2 my-sm-0 mr-2 btn-soft" type="button" (click)="openPublicar(mdLogin, mdRegister)">
         <fa-icon [icon]="faPlusCircle"></fa-icon>
         Publicar
       </button>
-      <button class="btn btn-success btn-sm my-2 my-sm-0 btn-soft" *ngIf="!loggedIn" type="button" (click)="openModal(content)">
+      <button class="btn btn-success btn-sm my-2 my-sm-0 btn-soft" *ngIf="!loggedIn" type="button" (click)="openModal(mdLogin)">
         <fa-icon [icon]="faUser"></fa-icon>
         Login
       </button>
@@ -19,14 +19,46 @@
         <fa-icon [icon]="faUser"></fa-icon>
         Logout
       </button>
-      <span *ngIf="loggedIn" class="ml-2" style="border: solid 1px blue;padding: 2px 5px;border-radius: 50px;vertical-align: middle;">
-        <small class="mr-2">{{user.name}}</small>
+      <span *ngIf="loggedIn" class="ml-2" style="border: solid 1px blue;padding: 3px 5px;border-radius: 50px;vertical-align: middle;">
         <img [src]="user.photoUrl" class="rounded-circle" style="height: 20px;" alt="">
+        <small class="ml-2">{{user.name}}</small>
       </span>
       <!-- Login Modal -->
-      <ng-template #content let-modal>
+      <ng-template #mdLogin let-modal>
         <div class="modal-body">
           <app-auth></app-auth>
+        </div>
+      </ng-template>
+      <!-- Register Modal -->
+      <ng-template #mdRegister let-modal>
+        <div class="modal-body">
+          <form action="">
+            <div class="form-group">
+              <label for="businessName">Negocio</label>
+              <input type="text" name="businessName" id="businessName" class="form-control">
+              <small>Nombre de tu negocio o proyecto</small>
+            </div>
+            <div class="form-group">
+              <label for="businessName">Direccion</label>
+              <input type="text" name="address" id="address" class="form-control">
+              <small>Direccion de tu negocio o domicilio</small>
+            </div>
+            <div class="form-group">
+              <label for="businessName">Telefono</label>
+              <input type="text" name="phone" id="phone" class="form-control">
+              <small>Telefono de tu negocio o domicilio</small>
+            </div>
+            <div class="form-group">
+              <label for="businessName">Tipo de comercio</label>
+              <select name="category" id="category" class="form-control">
+                <option value="1">Surtifruver</option>
+                <option value="2">Minimercado</option>
+                <option value="3">Tienda</option>
+              </select>
+              <small>Selecciona la categoria de tu negocio o proyecto</small>
+            </div>
+            <button type="submit" class="btn btn-success">Publicar</button>
+          </form>
         </div>
       </ng-template>
     </form>

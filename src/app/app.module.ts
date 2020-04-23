@@ -4,14 +4,20 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+// Own components
 import { HeaderTopComponent } from './components/header-top/header-top.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { CategoryItemsComponent } from './components/category-items/category-items.component';
 
 // Social login
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreItemsComponent } from './components/store-items/store-items.component';
+import { FooterComponent } from './components/footer/footer.component'
+import { HttpClientModule } from '@angular/common/http';
 
-import { AuthComponent } from './components/auth/auth.component';
 
 const config = new AuthServiceConfig([
   {
@@ -32,7 +38,10 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     HeaderTopComponent,
-    AuthComponent
+    AuthComponent,
+    CategoryItemsComponent,
+    StoreItemsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +49,7 @@ export function provideConfig() {
     FontAwesomeModule,
     SocialLoginModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [
     {

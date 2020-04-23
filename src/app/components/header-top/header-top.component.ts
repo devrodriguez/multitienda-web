@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AuthService, SocialUser } from 'angularx-social-login';
 // Fontawsome
 import {
@@ -16,8 +16,13 @@ import { NgbModal,  } from '@ng-bootstrap/ng-Bootstrap';
 })
 export class HeaderTopComponent implements OnInit {
 
+  @ViewChild("mdLogin") mdLogin: ElementRef;
+  @ViewChild("mdRegister") mdRegister: ElementRef;
+
   faPlusCircle = faPlusCircle;
   faUser = faUser;
+
+  prevPublic: boolean = false;
 
   public user: SocialUser;
   public loggedIn: boolean;
@@ -35,11 +40,24 @@ export class HeaderTopComponent implements OnInit {
       if (this.loggedIn) {
         this.modalService.dismissAll();
       }
+
+      if (this.prevPublic) {
+        this.openPublicar(this.mdLogin, this.mdRegister)
+      }
     });
   }
 
-  openModal(content) {
-    this.modalService.open(content, { centered: true })
+  openModal(mdLogin) {
+    this.modalService.open(mdLogin, { centered: true })
+  }
+
+  openPublicar(mdLogin, mdRegister) {
+    this.prevPublic = true;
+    if (this.loggedIn) {
+      this.modalService.open(mdRegister, { centered: true })
+    } else {
+      this.modalService.open(mdLogin, { centered: true })
+    }
   }
 
   signOut(): void {

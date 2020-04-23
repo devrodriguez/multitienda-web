@@ -1,13 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  faAppleAlt,
-  faCut,
-  faDrumstickBite,
-  faAddressBook,
-  faAddressCard,
-  faBreadSlice,
-  faUtensils,
-  faShoppingBasket,
+import {  
   faSearch
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,16 +9,5 @@ import {
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'multitienda-web';
-
-
-  faAppleAlt = faAppleAlt;
-  faCut = faCut;
-  faDrumstickBite = faDrumstickBite;
-  faAddressBook = faAddressBook;
-  faAddressCard = faAddressCard;
-  faBreadSlice = faBreadSlice;
-  faUtensils = faUtensils;
-  faShoppingBasket = faShoppingBasket;
   faSearch = faSearch;
 }
