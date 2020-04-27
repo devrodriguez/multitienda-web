@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { AuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider } from 'angularx-social-login';
@@ -9,6 +9,8 @@ import { AuthService, GoogleLoginProvider, SocialUser, FacebookLoginProvider } f
   styleUrls: ['./auth.component.sass']
 })
 export class AuthComponent implements OnInit {
+  @Output() registered = new EventEmitter<boolean>();
+  @ViewChild("registerCust") registerCust: any;
 
   faGoogle = faGoogle;
   faFacebook = faFacebook;
@@ -30,4 +32,12 @@ export class AuthComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
+  signIn() {
+    this.registerCust.register(this.registerCust.frmRegCus);
+  }
+
+  consumerRegistered(res: any) {
+    console.log('In AuthComponent.consumerRegistered', res);
+    this.registered.emit(true);
+  }
 }

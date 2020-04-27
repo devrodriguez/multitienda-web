@@ -54,13 +54,18 @@ export class HeaderTopComponent implements OnInit {
   openPublicar(mdLogin, mdRegister) {
     this.prevPublic = true;
     if (this.loggedIn) {
-      this.modalService.open(mdRegister, { centered: true })
+      this.modalService.open(mdRegister, { centered: true });
     } else {
-      this.modalService.open(mdLogin, { centered: true })
+      this.modalService.open(mdLogin, { centered: true });
     }
   }
 
   signOut(): void {
     this.authService.signOut();
+  }
+
+  consumerRegistered(res: any) {
+    console.log('In HeaderTopComponent.consumerRegistered', res);
+    this.modalService.dismissAll();
   }
 }

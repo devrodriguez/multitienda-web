@@ -26,39 +26,19 @@
       <!-- Login Modal -->
       <ng-template #mdLogin let-modal>
         <div class="modal-body">
-          <app-auth></app-auth>
+          <app-auth (registered)="consumerRegistered($event)"></app-auth>
         </div>
       </ng-template>
       <!-- Register Modal -->
       <ng-template #mdRegister let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <div class="modal-body">
-          <form action="">
-            <div class="form-group">
-              <label for="businessName">Negocio</label>
-              <input type="text" name="businessName" id="businessName" class="form-control">
-              <small>Nombre de tu negocio o proyecto</small>
-            </div>
-            <div class="form-group">
-              <label for="businessName">Direccion</label>
-              <input type="text" name="address" id="address" class="form-control">
-              <small>Direccion de tu negocio o domicilio</small>
-            </div>
-            <div class="form-group">
-              <label for="businessName">Telefono</label>
-              <input type="text" name="phone" id="phone" class="form-control">
-              <small>Telefono de tu negocio o domicilio</small>
-            </div>
-            <div class="form-group">
-              <label for="businessName">Tipo de comercio</label>
-              <select name="category" id="category" class="form-control">
-                <option value="1">Surtifruver</option>
-                <option value="2">Minimercado</option>
-                <option value="3">Tienda</option>
-              </select>
-              <small>Selecciona la categoria de tu negocio o proyecto</small>
-            </div>
-            <button type="submit" class="btn btn-success">Publicar</button>
-          </form>
+          <app-register-store></app-register-store>
         </div>
       </ng-template>
     </form>

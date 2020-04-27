@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
+import { Store } from 'src/app/interfaces/store';
 
 @Component({
   selector: 'app-store-items',
@@ -8,29 +9,30 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class StoreItemsComponent implements OnInit {
 
-  stores: any[] = [];
+  stores: Store[] = [] as Store[];
 
   constructor(private storeService: StoreService) {
     this.readStores();
   }
 
   ngOnInit(): void {
+    this.readStores();
   }
 
   readStores() {
-    this.storeService.GetStores().subscribe(res => {
-      this.stores = res as [];
+    this.storeService.GetStores().subscribe((res: Store[]) => {
+      this.stores = res;
     }, err => {
       console.log(err);
     });
   }
 
-  getImage(images: any) {
-    console.log(images)
-    if(images) {
-      return images[0]
+  getImage(image: any) {
+    if (image) {
+      return `http://localhost:3001/s/${image[0]}`
     }
-    return 'https://wiki.teamfortress.com/w/images/thumb/2/2d/TF2_Beta_logo.png/350px-TF2_Beta_logo.png';
+
+    return `http://localhost:3001/s/stores/mt1.png`
   }
 
 }
