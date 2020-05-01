@@ -5,9 +5,11 @@ import {
   faPlusCircle,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
+import { AuthService as LocalAuthService } from '../../services/auth.service'
 
 // Bootstrap
 import { NgbModal,  } from '@ng-bootstrap/ng-Bootstrap';
+import { Customer } from 'src/app/interfaces/customer';
 
 @Component({
   selector: 'app-header-top',
@@ -22,32 +24,46 @@ export class HeaderTopComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   faUser = faUser;
 
-  prevPublic: boolean = false;
+  prevPublic = false;
 
-  public user: SocialUser;
+  public user: SocialUser = {} as SocialUser;
   public loggedIn: boolean;
 
   constructor(
     private authService: AuthService,
+    private locAuthService: LocalAuthService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
     this.authService.authState.subscribe(user => {
-      this.user = user;
       this.loggedIn = (user != null);
 
       if (this.loggedIn) {
+        this.user = user;
         this.modalService.dismissAll();
       }
 
       if (this.prevPublic) {
-        this.openPublicar(this.mdLogin, this.mdRegister)
+        this.openPublicar(this.mdLogin, this.mdRegister);
       }
+    });
+
+    this.locAuthService.authState.subscribe(user => {
+      this.loggedIn = (user != null);
+
+      if(this.loggedIn) {
+        const customer = (user as Customer);
+        this.user.name = customer.name;
+        sessionStorage.setItem('session', JSON.stringify(customer))
+      }
+    }, err => {
+      console.log(err);
     });
   }
 
   openModal(mdLogin) {
+    this.modalService.dismissAll();
     this.modalService.open(mdLogin, { centered: true })
   }
 
@@ -62,10 +78,14 @@ export class HeaderTopComponent implements OnInit {
 
   signOut(): void {
     this.authService.signOut();
+    this.locAuthService.signOut();
   }
 
-  consumerRegistered(res: any) {
-    console.log('In HeaderTopComponent.consumerRegistered', res);
+  customerLogged(evt: any) {
+    this.modalService.dismissAll();
+  }
+
+  customerRegistered(evt: any) {
     this.modalService.dismissAll();
   }
 }

@@ -2,12 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
 import { Store } from 'src/app/interfaces/store';
 
+import {
+  faPhone,
+  faAddressBook
+} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-store-items',
   templateUrl: './store-items.component.html',
   styleUrls: ['./store-items.component.sass']
 })
 export class StoreItemsComponent implements OnInit {
+  faPhone = faPhone;
+  faAddressBook = faAddressBook;
 
   stores: Store[] = [] as Store[];
 

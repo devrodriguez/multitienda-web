@@ -26,7 +26,13 @@
       <!-- Login Modal -->
       <ng-template #mdLogin let-modal>
         <div class="modal-body">
-          <app-auth (registered)="consumerRegistered($event)"></app-auth>
+          <app-auth (loggedInEvt)="customerLogged($event)" (doRegisterEvt)="openModal(mdRegCustomer)"></app-auth>
+        </div>
+      </ng-template>
+      <!-- Register Customer -->
+      <ng-template #mdRegCustomer let-modal>
+        <div class="modal-body">
+          <app-register-customer (registeredInEvt)="customerRegistered($event)"></app-register-customer>
         </div>
       </ng-template>
       <!-- Register Modal -->

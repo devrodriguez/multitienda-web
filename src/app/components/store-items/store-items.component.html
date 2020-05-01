@@ -1,5 +1,23 @@
 <section>
   <div class="row">
+    <div class="col-md-6" *ngFor="let store of stores">
+      <div class="card card-store-short">
+        <div class="card-store-content">
+          <img [src]="getImage(store.urlImages)">
+          <div class="card-store-right">
+            <h4>{{store.name}}<small>{{store.category.name}}</small></h4>  
+            <p>{{store.description}}</p>
+            <div class="card-store-right-bottom">
+              <a href=""><fa-icon [icon]="faPhone"></fa-icon></a>
+              <a href=""><fa-icon [icon]="faAddressBook"></fa-icon></a>
+              <button class="btn btn-outline-primary btn-sm">Contactar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
     <div class="col-sm-12 col-md-4 text-center" *ngFor="let store of stores">
       <h4>{{store.name}}</h4>
       <small>{{store.description}}</small>
@@ -9,5 +27,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </section>

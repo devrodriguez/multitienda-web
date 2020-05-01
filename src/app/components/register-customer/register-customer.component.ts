@@ -10,7 +10,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class RegisterCustomerComponent implements OnInit {
   @Input() embedded: boolean;
-  @Output() registered = new EventEmitter<boolean>();
+  @Output() registeredInEvt = new EventEmitter<boolean>();
   @ViewChild("frmRegCus") frmRegCus: any;
 
   customer: Customer = {} as Customer;
@@ -28,10 +28,10 @@ export class RegisterCustomerComponent implements OnInit {
 
     this.customerService.createCustomer(this.customer).subscribe(res => {
       console.log('RegisterCustomerComponent.register.result', res);
-      this.registered.emit(true);
+      this.registeredInEvt.emit(true);
     }, err => {
       console.log('RegisterCustomerComponent.register.error', err);
-      this.registered.emit(false);
+      this.registeredInEvt.emit(false);
     });
   }
 
