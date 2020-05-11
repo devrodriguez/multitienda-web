@@ -1,64 +1,16 @@
 <section>
   <div class="row">
-    <div class="col">
-      <div class="card card-head-category bg-success">
-        <div class="card-body text-center">
-          <span>
-            <fa-icon [icon]="faAppleAlt"></fa-icon>
-          </span>
-          <small>Surtifruver</small>
+    <div class="col-4 col-sm-3 col-md-2" *ngFor="let category of categories">
+      <a href="" >
+        <div [ngClass]="['card card-head-category', category.class]">
+          <div class="card-body text-center">
+            <span>
+              <fa-icon [icon]="category.icon"></fa-icon>
+            </span>
+            <small>{{category.name}}</small>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card card-head-category bg-info">
-        <div class="card-body">
-          <span>
-            <fa-icon [icon]="faShoppingBasket"></fa-icon>
-          </span>
-          <small>Minimercado</small>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card card-head-category bg-danger">
-        <div class="card-body">
-          <span>
-            <fa-icon [icon]="faDrumstickBite"></fa-icon>
-          </span>
-          <small>Carne</small>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card card-head-category bg-secondary">
-        <div class="card-body">
-          <span>
-            <fa-icon [icon]="faCut"></fa-icon>
-          </span>
-          <small>Peluqueria</small>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card card-head-category bg-warning">
-        <div class="card-body">
-          <span>
-            <fa-icon [icon]="faBreadSlice"></fa-icon>
-          </span>
-          <small>Panaderia</small>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card card-head-category bg-primary">
-        <div class="card-body">
-          <span>
-            <fa-icon [icon]="faUtensils"></fa-icon>
-          </span>
-          <small>Restaurante</small>
-        </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>

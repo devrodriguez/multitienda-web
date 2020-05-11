@@ -23,6 +23,39 @@ export class CategoryItemsComponent implements OnInit {
   faBreadSlice = faBreadSlice;
   faUtensils = faUtensils;
 
+  categories: any[] = [
+    {
+      name: 'Frutas',
+      icon: faAppleAlt,
+      class: 'bg-success'
+    },
+    {
+      name: 'Mercado',
+      icon: faShoppingBasket,
+      class: 'bg-info'
+    },
+    {
+      name: 'Carne',
+      icon: faDrumstickBite,
+      class: 'bg-danger'
+    },
+    {
+      name: 'Peluqueria',
+      icon: faCut,
+      class: 'bg-primary'
+    },
+    {
+      name: 'Panaderia',
+      icon: faBreadSlice,
+      class: 'bg-warning'
+    },
+    {
+      name: 'Restaurante',
+      icon: faUtensils,
+      class: 'bg-secondary'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {

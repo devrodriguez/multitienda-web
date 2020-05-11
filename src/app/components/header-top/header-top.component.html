@@ -19,7 +19,7 @@
         <fa-icon [icon]="faUser"></fa-icon>
         Logout
       </button>
-      <span *ngIf="loggedIn" class="ml-2" style="border: solid 1px blue;padding: 3px 5px;border-radius: 50px;vertical-align: middle;">
+      <span *ngIf="loggedIn" class="ml-2 login-cont">
         <img [src]="user.photoUrl" class="rounded-circle" style="height: 20px;" alt="">
         <small class="ml-2">{{user.name}}</small>
       </span>

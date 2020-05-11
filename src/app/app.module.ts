@@ -18,9 +18,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 
 // Angular Material
 
@@ -65,6 +66,11 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

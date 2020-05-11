@@ -6,8 +6,13 @@
   </div>
   <div class="form-group">
     <label for="businessName">Direccion</label>
-    <input type="text" name="address" id="address" class="form-control" [(ngModel)]="storeData.Address" required>
-    <small>Direccion de tu negocio o domicilio</small>
+    <input type="text" name="address" id="address" class="form-control" 
+    [(ngModel)]="storeData.Address"
+    [class.is-invalid]="searchFailed"
+    [ngbTypeahead]="search"
+    required>
+    <small>Cl. 1 #1-1, Bogota</small>
+    <small *ngIf="searching" class="form-text text-muted">searching...</small>
   </div>
   <div class="form-group">
     <label for="businessName">Telefono</label>

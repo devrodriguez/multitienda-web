@@ -6,4 +6,5 @@ export interface Store {
     UrlImages: string[];
     Address: string;
     PhoneNumber: string;
+    GeoLocation: any;
 }

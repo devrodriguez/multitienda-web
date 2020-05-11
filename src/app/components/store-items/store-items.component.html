@@ -1,16 +1,19 @@
 <section>
+  <div class="alert alert-info" *ngIf="!stores">
+    <fa-icon [icon]="faInfoCircle"></fa-icon>&nbsp;No hay comercios relacionados a la busqueda. Intenta buscar por categoria.
+  </div>
   <div class="row">
     <div class="col-md-6" *ngFor="let store of stores">
       <div class="card card-store-short">
         <div class="card-store-content">
           <img [src]="getImage(store.urlImages)">
           <div class="card-store-right">
-            <h4>{{store.name}}<small>{{store.category.name}}</small></h4>  
+            <h4>{{store.name}}<small>{{store.category.name}}</small><small>{{store.address}}</small></h4>
             <p>{{store.description}}</p>
             <div class="card-store-right-bottom">
-              <a href=""><fa-icon [icon]="faPhone"></fa-icon></a>
-              <a href=""><fa-icon [icon]="faAddressBook"></fa-icon></a>
-              <button class="btn btn-outline-primary btn-sm">Contactar</button>
+              <a [href]="'tel:'+store.phoneNumber" class="btn btn-outline-primary btn-sm">
+                <fa-icon [icon]="faPhone"></fa-icon>Contactar
+              </a>
             </div>
           </div>
         </div>

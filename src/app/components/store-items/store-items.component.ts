@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
 import { Store } from 'src/app/interfaces/store';
 
 import {
   faPhone,
-  faAddressBook
+  faAddressBook,
+  faInfoCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -13,18 +14,15 @@ import {
   styleUrls: ['./store-items.component.sass']
 })
 export class StoreItemsComponent implements OnInit {
+  faInfoCircle = faInfoCircle;
   faPhone = faPhone;
   faAddressBook = faAddressBook;
 
   stores: Store[] = [] as Store[];
 
-  constructor(private storeService: StoreService) {
-    this.readStores();
-  }
+  constructor(private storeService: StoreService) {}
 
-  ngOnInit(): void {
-    this.readStores();
-  }
+  ngOnInit(): void {}
 
   readStores() {
     this.storeService.GetStores().subscribe((res: Store[]) => {
@@ -32,6 +30,14 @@ export class StoreItemsComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+
+  findStores(lat: number, lon: number, q: string) {
+    this.storeService.FindStore('2000000', lat, lon, q).subscribe((res: Store[]) => {
+      this.stores = res;
+    }, err => {
+      console.error(err);
+    })
   }
 
   getImage(image: any) {
