@@ -5,7 +5,7 @@ import {
   faPlusCircle,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
-import { AuthService as LocalAuthService } from '../../services/auth.service'
+import { AuthService as LocalAuthService } from '../../services/auth.service';
 
 // Bootstrap
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -52,10 +52,10 @@ export class HeaderTopComponent implements OnInit {
     this.locAuthService.authState.subscribe(user => {
       this.loggedIn = (user != null);
 
-      if(this.loggedIn) {
+      if (this.loggedIn) {
         const customer = (user as Customer);
         this.user.name = customer.name;
-        sessionStorage.setItem('session', JSON.stringify(customer))
+        sessionStorage.setItem('session', JSON.stringify(customer));
       }
     }, err => {
       console.log(err);

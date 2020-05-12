@@ -15,8 +15,8 @@ import { StoreItemsComponent } from './components/store-items/store-items.compon
 import { FooterComponent } from './components/footer/footer.component';
 
 // Social login
-import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from "angularx-social-login";
-import { GoogleLoginProvider } from "angularx-social-login";
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -29,11 +29,11 @@ import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("944280994375-11rfd3spalibjkg8g2nunvj9rqi34550.apps.googleusercontent.com")
+    provider: new GoogleLoginProvider('944280994375-11rfd3spalibjkg8g2nunvj9rqi34550.apps.googleusercontent.com')
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("2794586083924477")
+    provider: new FacebookLoginProvider('2794586083924477')
   }
 ]);
 
