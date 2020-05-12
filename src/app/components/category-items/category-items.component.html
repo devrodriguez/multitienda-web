@@ -1,11 +1,11 @@
 <section>
   <div class="row">
     <div class="col-4 col-sm-3 col-md-2" *ngFor="let category of categories">
-      <a href="" >
+      <a href="#" (click)="selectCategory($event, category)">
         <div [ngClass]="['card card-head-category', category.class]">
           <div class="card-body text-center">
             <span>
-              <fa-icon [icon]="category.icon"></fa-icon>
+              <fa-icon [icon]="faShoppingBasket"></fa-icon>
             </span>
             <small>{{category.name}}</small>
           </div>

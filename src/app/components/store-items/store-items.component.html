@@ -1,5 +1,5 @@
 <section>
-  <div class="alert alert-info" *ngIf="!stores">
+  <div class="alert alert-info" *ngIf="stores.length == 0">
     <fa-icon [icon]="faInfoCircle"></fa-icon>&nbsp;No hay comercios relacionados a la busqueda. Intenta buscar por categoria.
   </div>
   <div class="row">

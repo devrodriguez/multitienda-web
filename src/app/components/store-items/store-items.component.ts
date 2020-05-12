@@ -14,11 +14,12 @@ import {
   styleUrls: ['./store-items.component.sass']
 })
 export class StoreItemsComponent implements OnInit {
+  @Input() stores: Store[] = [];
   faInfoCircle = faInfoCircle;
   faPhone = faPhone;
   faAddressBook = faAddressBook;
 
-  stores: Store[] = [] as Store[];
+  // stores: Store[] = [] as Store[];
 
   constructor(private storeService: StoreService) {}
 
@@ -33,11 +34,11 @@ export class StoreItemsComponent implements OnInit {
   }
 
   findStores(lat: number, lon: number, q: string) {
-    this.storeService.FindStore('2000000', lat, lon, q).subscribe((res: Store[]) => {
-      this.stores = res;
+    this.storeService.FindStore('2000000', lat, lon, q).subscribe((stores: Store[]) => {
+      this.stores = stores ? stores : [];
     }, err => {
       console.error(err);
-    })
+    });
   }
 
   getImage(image: any) {

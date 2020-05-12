@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import {  
+import {
   faSearch
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
+import { StoreService } from './services/store.service';
+import { Store } from './interfaces/store';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +18,9 @@ export class AppComponent {
   latitude: number;
   longitude: number;
   query: string;
+  stores: Store[] = [] as Store[];
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private storeService: StoreService) {
     this.authService.authState.subscribe(res => {
       console.log('Listening from app-component', res);
     }, err => {
@@ -41,9 +44,27 @@ export class AppComponent {
     }
   }
 
-  findStores(evt, storeItems) {
+  findByInput(evt, storeItems) {
     if (evt.key === 'Enter') {
       storeItems.findStores(this.latitude, this.longitude, this.query);
     }
+  }
+
+  findStores() {
+    this.storeService.FindStore('2000000', this.latitude, this.longitude, this.query)
+    .subscribe((stores: Store[]) => {
+      this.stores = stores ? stores : [];
+    }, err => {
+      console.error(err);
+    });
+  }
+
+  selectCategory(catName: string) {
+    this.storeService.FindStore('2000000', this.latitude, this.longitude, catName)
+    .subscribe((stores: Store[]) => {
+      this.stores = stores ? stores : [];
+    }, err => {
+      console.error(err);
+    });
   }
 }

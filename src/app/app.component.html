@@ -8,14 +8,14 @@
       <p class="lead text-center">Siempre estaremos cerca de ti</p>
       <hr class="my-2">
       <div class="form-group" style="position: relative">
-        <input type="text" class="form-control big-input" name="" id="" placeholder="Busca el comercio que necesites..." [(ngModel)]="query" (keydown)="findStores($event, storeItems)">
+        <input type="text" class="form-control big-input" name="" id="" placeholder="Busca el comercio que necesites..." [(ngModel)]="query" (keydown)="findByInput($event, storeItems)">
         <fa-icon [icon]="faSearch" style="color: #aaa; font-size: 1.5rem; position: absolute; top: .8rem; right: 1.5rem;"></fa-icon>
       </div>
-      <app-category-items></app-category-items>
+      <app-category-items (selectCategoryEvt)="selectCategory($event)"></app-category-items>
     </div>
   </div>
   <div class="container">
-    <app-store-items #storeItems></app-store-items>
+    <app-store-items #storeItems [stores]="stores"></app-store-items>
   </div>
   <app-footer></app-footer>
 </div>
