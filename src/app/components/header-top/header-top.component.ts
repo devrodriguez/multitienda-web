@@ -8,7 +8,7 @@ import {
 import { AuthService as LocalAuthService } from '../../services/auth.service'
 
 // Bootstrap
-import { NgbModal } from '@ng-bootstrap/ng-Bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Customer } from 'src/app/interfaces/customer';
 
 @Component({
@@ -18,8 +18,8 @@ import { Customer } from 'src/app/interfaces/customer';
 })
 export class HeaderTopComponent implements OnInit {
 
-  @ViewChild("mdLogin") mdLogin: ElementRef;
-  @ViewChild("mdRegister") mdRegister: ElementRef;
+  @ViewChild('mdLogin') mdLogin: ElementRef;
+  @ViewChild('mdRegister') mdRegister: ElementRef;
 
   faPlusCircle = faPlusCircle;
   faUser = faUser;
