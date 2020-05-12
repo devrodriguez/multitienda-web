@@ -8,7 +8,7 @@ import {
 import { AuthService as LocalAuthService } from '../../services/auth.service'
 
 // Bootstrap
-import { NgbModal,  } from '@ng-bootstrap/ng-Bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-Bootstrap';
 import { Customer } from 'src/app/interfaces/customer';
 
 @Component({
