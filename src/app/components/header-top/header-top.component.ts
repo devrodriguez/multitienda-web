@@ -25,6 +25,7 @@ export class HeaderTopComponent implements OnInit {
   faUser = faUser;
 
   prevPublic = false;
+  navOpen = false;
 
   public user: SocialUser = {} as SocialUser;
   public loggedIn: boolean;
@@ -79,6 +80,7 @@ export class HeaderTopComponent implements OnInit {
   signOut(): void {
     this.authService.signOut();
     this.locAuthService.signOut();
+    this.navOpen = false;
   }
 
   customerLogged(evt: any) {
@@ -87,5 +89,9 @@ export class HeaderTopComponent implements OnInit {
 
   customerRegistered(evt: any) {
     this.modalService.dismissAll();
+  }
+
+  toggleNavbar() {
+    this.navOpen = !this.navOpen;
   }
 }

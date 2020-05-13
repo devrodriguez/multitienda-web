@@ -1,11 +1,25 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light-silver">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPrimary" aria-controls="navbarPrimary" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+  <div class="collapse navbar-collapse" [ngClass]="{'show': navOpen}" id="navbarPrimary">
     <div class="mr-auto">
       <button class="btn btn-link btn-sm">Contactenos</button>
     </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link btn btn-success btn-block" role="button" href="#" *ngIf="!loggedIn" (click)="openModal(mdLogin)">
+          <fa-icon [icon]="faUser"></fa-icon>
+          Login
+        </a>
+      </li>
+      <li>
+        <a class="nav-link btn btn-danger btn-block" role="button" href="#" *ngIf="loggedIn" (click)="signOut()">
+          <fa-icon [icon]="faUser"></fa-icon>
+          Logout
+        </a>
+      </li>
+    </ul>
     <form class="form-inline my-2 my-lg-0">
       <button class="btn btn-danger btn-sm my-2 my-sm-0 mr-2 btn-soft" type="button" (click)="openPublicar(mdLogin, mdRegister)">
         <fa-icon [icon]="faPlusCircle"></fa-icon>
