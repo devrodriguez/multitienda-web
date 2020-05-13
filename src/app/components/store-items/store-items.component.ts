@@ -7,6 +7,7 @@ import {
   faAddressBook,
   faInfoCircle
 } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-store-items',
@@ -43,10 +44,10 @@ export class StoreItemsComponent implements OnInit {
 
   getImage(image: any) {
     if (image) {
-      return `http://localhost:3001/s/${image[0]}`
+      return `${environment.apiHost}/s/${image[0]}`;
     }
 
-    return `http://localhost:3001/s/stores/mt1.png`
+    return `${environment.apiHost}/s/stores/mt1.png`;
   }
 
 }
