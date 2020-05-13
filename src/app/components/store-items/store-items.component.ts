@@ -34,8 +34,8 @@ export class StoreItemsComponent implements OnInit {
     });
   }
 
-  findStores(lat: number, lon: number, q: string) {
-    this.storeService.FindStore('2000000', lat, lon, q).subscribe((stores: Store[]) => {
+  findStores(kmDist: string, lat: number, lon: number, q: string) {
+    this.storeService.FindStore(kmDist, lat, lon, q).subscribe((stores: Store[]) => {
       this.stores = stores ? stores : [];
     }, err => {
       console.error(err);

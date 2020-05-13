@@ -6,7 +6,7 @@
     <div class="mr-auto">
       <button class="btn btn-link btn-sm">Contactenos</button>
     </div>
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" style="display: none;">
       <li class="nav-item">
         <a class="nav-link btn btn-success btn-block" role="button" href="#" *ngIf="!loggedIn" (click)="openModal(mdLogin)">
           <fa-icon [icon]="faUser"></fa-icon>

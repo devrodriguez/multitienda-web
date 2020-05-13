@@ -9,7 +9,13 @@
       <hr class="my-2">
       <div class="form-group" style="position: relative">
         <input type="text" class="form-control big-input" name="" id="" placeholder="Busca el comercio que necesites..." [(ngModel)]="query" (keydown)="findByInput($event, storeItems)">
-        <fa-icon [icon]="faSearch" style="color: #aaa; font-size: 1.5rem; position: absolute; top: .8rem; right: 1.5rem;"></fa-icon>
+        <fa-icon [icon]="faSearch" class="input-search-icon"></fa-icon>
+        <select name="km" id="km" class="form-control big-select" [(ngModel)]="kmDist">
+          <option value="1">1 Km</option>
+          <option value="5">5 Km</option>
+          <option value="10">10 Km</option>
+          <option value="20">20 Km</option>
+        </select>
       </div>
       <app-category-items (selectCategoryEvt)="selectCategory($event)"></app-category-items>
     </div>

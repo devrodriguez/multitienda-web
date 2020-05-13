@@ -18,6 +18,7 @@ export class AppComponent {
   latitude: number;
   longitude: number;
   query: string;
+  kmDist: string = '1';
   stores: Store[] = [] as Store[];
 
   constructor(private authService: AuthService, private storeService: StoreService) {
@@ -46,12 +47,12 @@ export class AppComponent {
 
   findByInput(evt, storeItems) {
     if (evt.key === 'Enter') {
-      storeItems.findStores(this.latitude, this.longitude, this.query);
+      storeItems.findStores(this.kmDist, this.latitude, this.longitude, this.query);
     }
   }
 
   findStores() {
-    this.storeService.FindStore('2000000', this.latitude, this.longitude, this.query)
+    this.storeService.FindStore(this.kmDist, this.latitude, this.longitude, this.query)
     .subscribe((stores: Store[]) => {
       this.stores = stores ? stores : [];
     }, err => {
@@ -60,7 +61,7 @@ export class AppComponent {
   }
 
   selectCategory(catName: string) {
-    this.storeService.FindStore('2000000', this.latitude, this.longitude, catName)
+    this.storeService.FindStore(this.kmDist, this.latitude, this.longitude, catName)
     .subscribe((stores: Store[]) => {
       this.stores = stores ? stores : [];
     }, err => {
